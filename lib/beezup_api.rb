@@ -1,6 +1,5 @@
 require "beezup_api/version"
 require 'unirest'
-require 'beezup_api/unirest_patch'
 
 module BeezupApi
   class << self

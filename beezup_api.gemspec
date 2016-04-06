@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.description   = 'A Ruby interface to the Beezup API.'
   spec.summary       = spec.description
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/tymate-team/beezup_api"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
