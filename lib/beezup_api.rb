@@ -27,6 +27,7 @@ module BeezupApi
   autoload :Api,             "beezup_api/api"
   autoload :Client,          "beezup_api/client"
   autoload :OrderList,       "beezup_api/order_list"
+  autoload :OrderDetail,     "beezup_api/order_detail"
   autoload :Errors,          "beezup_api/errors"
   autoload :Helpers,         "beezup_api/helpers"
   autoload :Version,         "beezup_api/version"
