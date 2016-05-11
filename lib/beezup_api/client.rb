@@ -30,7 +30,7 @@ module BeezupApi
     end
 
     def log(message)
-      @logger.info { message }
+      @logger.info { message } if @debug
     end
 
   end
