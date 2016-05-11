@@ -3,7 +3,7 @@ require 'unirest'
 
 module BeezupApi
   class << self
-    attr_accessor :user_id, :primary_token
+    attr_accessor :user_id, :primary_token, :debug
 
     # config/initializers/beezup_api.rb (for instance)
     #
@@ -11,6 +11,7 @@ module BeezupApi
     # BeezupApi.configure do |config|
     #   config.user_id = 'blu'
     #   config.primary_token = 'blu'
+    #   config.debug = false
     # end
     # ```
     # elsewhere

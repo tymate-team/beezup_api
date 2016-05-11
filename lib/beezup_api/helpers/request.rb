@@ -6,6 +6,7 @@ module BeezupApi
 
         def get(path, params={}, headers={})
           # Unirest.get(url, headers: {}, parameters: nil, auth:nil, &callback)
+          log("Get request on #{api_url(path)} \n  Headers: #{default_headers(headers)} \n  Parameters: #{params}")
 
           response = Unirest.get(
             api_url(path),

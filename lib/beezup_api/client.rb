@@ -1,4 +1,5 @@
 require 'cgi'
+require 'logger'
 
 module BeezupApi
   class Client
@@ -6,12 +7,18 @@ module BeezupApi
     include Api::QueryHelpers
 
 
-    attr_reader :consumer_user_id, :consumer_primary_token, :consumer_options
+    attr_reader :consumer_user_id, :consumer_primary_token, :consumer_options,
+      :debug, :logger
 
-    def initialize(uid=BeezupApi.user_id, ptoken=BeezupApi.primary_token, options={})
+    def initialize(uid=BeezupApi.user_id, ptoken=BeezupApi.primary_token, debug=BeezupApi.debug, options={})
       @consumer_user_id   = uid
       @consumer_primary_token  = ptoken
       @consumer_options = options
+      @debug = debug
+      if @debug
+        @logger = Logger.new(STDOUT)
+        @logger.level = Logger::DEBUG
+      end
     end
 
     def orders(options = {})
@@ -20,6 +27,10 @@ module BeezupApi
 
     def order(options = {})
       OrderDetail.new(self, options)
+    end
+
+    def log(message)
+      @logger.info { message }
     end
 
   end
