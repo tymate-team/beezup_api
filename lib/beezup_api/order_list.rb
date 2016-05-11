@@ -23,7 +23,7 @@ module BeezupApi
       Enumerator.new do |yielder|
         loop do
 
-          if (@pagination_result.totalNumberOfPages == query_options[:pageNumber]) || results.orderHeaders.nil?
+          if (@pagination_result.totalNumberOfPages < query_options[:pageNumber]) || results.orderHeaders.nil?
             raise StopIteration
           end
 

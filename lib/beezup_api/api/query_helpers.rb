@@ -9,7 +9,7 @@ module BeezupApi
 
         def simple_query(path, options={})
           headers = options.delete(:headers) || {}
-          params  = to_query(options)
+          params  = options
 
           get(path, params, headers)
         end
