@@ -21,11 +21,7 @@ module BeezupApi
       results = call_api(query_options)
 
       Enumerator.new do |yielder|
-        loop do
-
-          if (@pagination_result.totalNumberOfPages < query_options[:pageNumber]) || results.orderHeaders.nil?
-            raise StopIteration
-          end
+        while (@pagination_result.totalNumberOfPages >= query_options[:pageNumber]) && results.orderHeaders do
 
           query_options[:pageNumber] += 1
           results.orderHeaders.each do |entry|
@@ -35,6 +31,7 @@ module BeezupApi
           results = call_api(query_options)
         end
       end
+
     end
 
     private
