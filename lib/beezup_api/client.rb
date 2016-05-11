@@ -7,12 +7,12 @@ module BeezupApi
     include Api::QueryHelpers
 
 
-    attr_reader :consumer_user_id, :consumer_primary_token, :consumer_options,
+    attr_accessor :consumer_user_id, :consumer_primary_token, :consumer_options,
       :debug, :logger
 
     def initialize(uid=BeezupApi.user_id, ptoken=BeezupApi.primary_token, debug=BeezupApi.debug, options={})
-      @consumer_user_id   = uid
-      @consumer_primary_token  = ptoken
+      @consumer_user_id = uid
+      @consumer_primary_token = ptoken
       @consumer_options = options
       @debug = debug
       if @debug
