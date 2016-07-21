@@ -75,21 +75,21 @@ module BeezupApi
           case response.code
           when 401
             data = Mash.from_json(response.body)
-            raise BeezupApi::Errors::UnauthorizedError.new(data), "(#{data.status}): #{data.message}"
+            raise BeezupApi::Errors::UnauthorizedError.new(data), data.inspect
           when 400
             data = Mash.from_json(response.body)
-            raise BeezupApi::Errors::GeneralError.new(data), "(#{data.status}): #{data.message}"
+            raise BeezupApi::Errors::GeneralError.new(data), data.inspect
           when 403
             data = Mash.from_json(response.body)
-            raise BeezupApi::Errors::AccessDeniedError.new(data), "(#{data.status}): #{data.message}"
+            raise BeezupApi::Errors::AccessDeniedError.new(data), data.inspect
           when 404
             raise BeezupApi::Errors::NotFoundError, "(#{response.code}): #{response.body}"
           when 429
-            raise BeezupApi::Errors::RateLimitError, "(#{response.code}): #{response.message}"
+            raise BeezupApi::Errors::RateLimitError, "(#{response.code}): #{response.body}"
           when 500
-            raise BeezupApi::Errors::InformLinkedInError, "BeezupApi had an internal error. Please let them know in the forum. (#{response.code}): #{response.message}"
+            raise BeezupApi::Errors::InformBeezupError, "BeezupApi had an internal error. Please let them know in the forum. (#{response.code}): #{response.body}"
           when 502..503
-            raise BeezupApi::Errors::UnavailableError, "(#{response.code}): #{response.message}"
+            raise BeezupApi::Errors::UnavailableError, "(#{response.code}): #{response.body}"
           end
         end
 
